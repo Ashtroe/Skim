@@ -1,0 +1,53 @@
+@media screen
+  and (min-device-width: 800px){
+  body {
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+
+}
+#root{
+  width: 100%;
+  height: 100%;
+}
+.skim-ctnr{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+/* Nav */
+.nav{
+  position: fixed;
+  top: 0;
+}
+/* Log In */
+.log-in-ctnr{
+  border:solid;
+    border-radius: 1rem;
+  width: 50%;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+input{
+  width: 40%;
+  height: 5%;
+  margin-bottom: 5%;
+  border: none;
+  border-radius: .5rem;
+  text-align: center;
+  background: #f0f0f0;
+  font-size: 1.1rem;
+}
+::placeholder {
+  color: black;
+  opacity: 1;
+}
+.submit-li{
+  width: 25%;
+}}
