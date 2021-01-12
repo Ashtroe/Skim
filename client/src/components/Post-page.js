@@ -3,6 +3,7 @@ import { Route, Redirect, useParams } from 'react-router-dom'
 import axios from 'axios'
 import UserContext from './UserContext'
 import Comment from './Comment'
+import CreateComment from './Create-Comment'
 
 let PostPage = (props)=>{
   let {id} = useParams()
@@ -24,29 +25,32 @@ let PostPage = (props)=>{
       .then(response=>setPost(response.data[0]))
       .catch(err=>console.log(err))
     }
-  let upvote = (upvoteUser,score,postId)=>{
+  let upvote = (score,postId)=>{
       axios({
         method:'put',
         url:`${postId}/upvote`,
         data:{
-          upvoteUser: user,
+          upvoteUser: user._id,
           score: score + 1
         }
       })
       .catch((err)=>console.log(err))
     }
-  let downvote = (upvoteUser,score,postId)=>{
+  let downvote = (score,postId)=>{
       axios({
         method:'put',
         url:`${postId}/upvote`,
         data:{
-          upvoteUser: user,
+          upvoteUser: user._id,
           score: score - 1
         }
       })
       .then(()=>console.log('upvoted'))
     }
 
+  let showCreateComment = () =>{
+      document.querySelector('.create-comment-ctnr').style.visibility= 'visible'
+    }
 
 
   useEffect(()=>
@@ -66,10 +70,12 @@ let PostPage = (props)=>{
     return(
       (post.user)?
       <div className='post-page'>
+        <CreateComment post={post}/>
         <div className='post-page-top'>
           <div className='post-page-title'>{post.title}</div>
         </div>
         <div className='post-page-body'>
+          <img className='post-page-img' src={post.img} />
           <p>{post.body}</p>
           <p>{`in ${post.subreddit} by ${post.user}`}</p>
         </div>
@@ -78,12 +84,24 @@ let PostPage = (props)=>{
         </div>
         <hr/>
         <div className='post-page-buttons'>
-          <button className='upvote-btn' onClick={
-            ()=>upvote({user},post.score,id)
-          }></button>
+          <button className='upvote' onClick={
+            ()=>upvote(post.score,id)}>
+
+            <i className='gg-arrow-up-r'></i>
+          </button>
+
           <button className='downvote-btn' onClick={
-            ()=>downvote({user},post.score,id)
-          }></button>
+            ()=>downvote(post.score,id)}>
+
+              <i className='gg-arrow-up-r'></i>
+          </button>
+          <button className='create-comment-btn' onClick={
+              ()=>{
+                showCreateComment()
+              }
+            }
+            ><i className="gg-mail-reply"></i>
+          </button>
         </div>
         <hr/>
         <div className='post-page-comment-ctnr'>

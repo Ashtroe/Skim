@@ -81,13 +81,16 @@ app.post('/log-in',(req,res,next)=>{
 })
 
 // Create Post
-app.post('/submit',(req,res)=>{
+app.post('/submit',(req,res,next)=>{
+  let user = User.findById(req.body.user)
+
   let post = new Post({
-    postID: uuid.v4(),
+    user: req.body.user,
+    subreddit:req.body.subreddit,
     title: req.body.title,
     body: req.body.body,
     score: req.body.score,
-    image: req.body.image,
+    img: req.body.img,
   }).save(err => {
     if (err) {
       return next(err);
@@ -107,6 +110,7 @@ app.post('/s/:subreddit/:id',(req,res)=>{
         ]
       }
     })
+    .then(()=>res.send('comment added'))
 })
 
 // GET Post and commentS
@@ -130,7 +134,10 @@ app.put('/comments/:_id/upvote',(req,res)=>{
         upvotedPosts: [
           req.params._id
           ]
-        }})})})
+        }})
+      }
+    )
+  })
 
 //GET Subreddit
 app.get('/s/?subreddit',(req,res)=>{
@@ -150,7 +157,7 @@ passport.use(
       if (user.password !== password) {
         return done(null, false, { msg: "Incorrect password" });
       }
-      return done(null, user._id);
+      return done(null, user);
     });
   })
 );

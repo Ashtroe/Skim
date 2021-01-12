@@ -17,6 +17,7 @@ import NavBar from './components/NavBar'
 import Home from './components/Home'
 import SignUp from './components/Sign-up'
 import LogIn from './components/Log-in'
+import CreatePost from './components/Create-Post'
 import PostPage from './components/Post-page'
 
 
@@ -52,6 +53,9 @@ function App() {
           </Route>
           <Route path='/comments/:id' >
             <PostPage />
+          </Route>
+          <Route path='/createpost' >
+            <CreatePost />
           </Route>
         </Switch>
       </div>

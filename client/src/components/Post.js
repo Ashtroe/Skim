@@ -13,7 +13,7 @@ let Post = (props)=>{
       </div>
 
       <div className='post-mid'>
-        {props.img
+        {(props.img)
           ? <img src={props.img}></img>
           : <h6 id='post-body'>{props.body}</h6>
         }

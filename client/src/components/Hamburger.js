@@ -18,7 +18,7 @@ let Hamburger = () =>{
       <div className='hamburger-line'></div>
       <div className='menu-ctnr'>
         <Link to='/account'>View Account</Link>
-        <Link to='/submit-post'>Create Post</Link>
+        <Link to='/createpost'>Create Post</Link>
         <Link to='/signout'>Sign Out</Link>
       </div>
     </div>

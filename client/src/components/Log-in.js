@@ -11,13 +11,19 @@ import axios from 'axios'
 import UserContext from './UserContext'
 
 let LogIn = () =>{
-  let {user, setUser}= useContext(UserContext)
+  let {user, setUser, sub, setSub}= useContext(UserContext)
 
   useEffect(()=>{
     return(
       <Redirect to="/Home"/>
     )
   },[user])
+
+  useEffect(()=>
+    {
+      setSub('Log In')
+    }
+    ,[])
 
 
   let logIn = (user,pass)=>{
