@@ -9,7 +9,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 const morgan = require('morgan');
 const cors = require('cors');
-const session = require('express-session');
+const session = require('cookie-session');
 let PORT = process.env.PORT || 5000
 
 const User = require('./models/User')
