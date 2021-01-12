@@ -39,13 +39,10 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser('secret'))
 
 if (process.env.NODE_ENV === 'production') {
-  const path = require('path');
-   app.get('*', (req, res) => {
-     res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
-   });
+  app.use(express.static(path.join(__dirname, 'client/build')))
 }
 
-app.get('/home', (req,res)=>{
+app.get('/', (req,res)=>{
   if(req.user){
   Post.find({})
     .then(response=>{res.send(response)})

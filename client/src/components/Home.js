@@ -11,7 +11,7 @@ let Home = (props)=>{
   let getPosts = ()=>{
     axios({
       method:'get',
-      url:'/home',
+      url:'/',
     })
     .then(response=>{
       setPosts(response.data);
