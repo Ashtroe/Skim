@@ -19,6 +19,7 @@ import SignUp from './components/Sign-up'
 import LogIn from './components/Log-in'
 import CreatePost from './components/Create-Post'
 import PostPage from './components/Post-page'
+import AccountPage from './components/Account'
 
 
 function App() {
@@ -50,6 +51,9 @@ function App() {
           </Route>
           <Route path='/signup' >
             <SignUp />
+          </Route>
+          <Route path='/account' >
+            <AccountPage />
           </Route>
           <Route path='/comments/:id' >
             <PostPage />

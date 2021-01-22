@@ -76,8 +76,10 @@ let PostPage = (props)=>{
         </div>
         <div className='post-page-body'>
           <img className='post-page-img' src={post.img} />
-          <p>{post.body}</p>
-          <p>{`in ${post.subreddit} by ${post.user}`}</p>
+          <div className='post-page-text-ctnr'>
+            <p>{post.body}</p>
+            <p>{`in ${post.subreddit} by ${post.user}`}</p>
+          </div>
         </div>
         <div className='post-page-bottom'>
           <p>{post.score}</p>

@@ -25,7 +25,7 @@ let CreatePost = () =>{
     <div className='create-post-page'>
       <input className= 'create-post-sub' type="text" placeholder='Enter subreddit'/>
       <input className= 'create-post-title' type="text" placeholder='Enter Title'/>
-      <input className= 'create-post-text' type="text" placeholder='Enter Text (optional)'/>
+      <textarea className= 'create-post-text' type="text" placeholder='Enter Text (optional)'/>
       <input className= 'create-post-image' type="text" placeholder='Enter image URL (optional)'/>
       <button className='create-post-submit' onClick={
         ()=>{

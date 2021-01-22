@@ -11,7 +11,7 @@ let Home = (props)=>{
   let getPosts = ()=>{
     axios({
       method:'get',
-      url:'/',
+      url:'/home',
     })
     .then(response=>{
       setPosts(response.data);
@@ -29,7 +29,7 @@ let Home = (props)=>{
   // Set subreddit
   useEffect(()=>
     {
-      setSub('Home')
+      setSub('Frontpage')
     }
     ,[])
 
@@ -54,7 +54,7 @@ let Home = (props)=>{
           })}
         </div>
       :
-      <Redirect to='LogIn' />
+      <Redirect to='/LogIn' />
     )
   }
 

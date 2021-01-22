@@ -42,7 +42,7 @@ if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, 'client/build')))
 }
 
-app.get('/', (req,res)=>{
+app.get('/home', (req,res)=>{
   if(req.user){
   Post.find({})
     .then(response=>{res.send(response)})
@@ -78,6 +78,13 @@ app.post('/log-in',(req,res,next)=>{
       })
   })
   (req,res,next)
+})
+
+// View Account
+app.get('/account',(req,res)=>{
+  console.log(req.body);
+  User.find({_id:req.body.id})
+    .then((response)=>res.send(response))
 })
 
 // Create Post
